@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0; padding:0; }
+        div{width:200px; height:200px; }
+        #box{background:red; position:relative; margin:100px auto; transform-style:preserve-3d; transition:1s all ease; transform:perspective(800px) rotateY(0deg) }
+        #box div{position:absolute; top:0; left:0; }
+        #box .front{background:red; z-index:2; backface-visibility:hidden}
+        #box .back{background:yellow; transform:scale(-1,1)}
+        #box:active{transform:perspective(800px) rotateY(180deg)}
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="front">正</div>
+    <div class="back">反</div>
+</div>
+</body>
+</html>
