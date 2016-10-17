@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0; padding:0; }
+        #box{position:relative; width:200px; height:200px; margin:100px auto; transform-style:preserve-3d; transform:rotateX(50deg) rotateY(-30deg)}
+        #box div{width:100%; height:100%; position:absolute; top:0; left:0; font-size:100px; opacity:0.7;}
+        #box .front{background:red; transform:translateZ(100px);}
+        #box .back{background:brown; transform:translateZ(-100px) rotateX(180deg);}
+        #box .top{background:green; transform:translateY(-100px) rotateX(90deg);}
+        #box .bottom{background:yellow; transform:translateY(100px) rotateX(-90deg);}
+        #box .left{background:orange; transform:translatex(-100px) rotateY(-90deg);}
+        #box .right{background:hotpink; transform:translatex(100px) rotateY(90deg);}
+    </style>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            var h=-30;
+            var l=50;
+            $(document).mousedown(function(ev){
+                var disX=ev.clientX-h;
+                var disY=ev.clientY-l;
+                function fnMove(ev){
+                    var x=ev.clientY-disY;
+                    var y=ev.clientX-disX;
+                    $('#box').css('transform','rotateX('+x+'deg) rotate('+y+'deg)');
+                }
+                function fnUp(){
+                    $(document).off('mousemove',fnMove);
+                    $(document).off('mouseup',fnUp);
+                }
+                $(document).on('mousemove',fnMove);
+                $(document).on('mouseup',fnUp);
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="box">
+    <div class="front">1</div>
+    <div class="back">2</div>
+    <div class="bottom">3</div>
+    <div class="top">4</div>
+    <div class="left">5</div>
+    <div class="right">6</div>
+</div>
+</body>
+</html>
