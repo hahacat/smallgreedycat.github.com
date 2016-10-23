@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0; padding:0; list-style: none}
+		#box{width:133px; height:200px; border:1px solid #000; overflow:hidden; margin:100px auto; }
+		ul{position:absolute; top:0; left:0; width:552px; position:relative;animation:8s move linear infinite;}
+		li{ float:left; margin-right:5px; }
+		#box div{clear:both;}
+		@keyframes move{
+			from{
+				left:0; 
+			}
+			to{
+				left:-552px;
+			}
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBox=document.getElementById('box');
+			var oUl=oBox.children[0];
+			oUl.innerHTML+=oUl.innerHTML;
+			oUl.style.width=oUl.offsetWidth*2+'px'; 
+			//oUl.style.annimation='8s move linear infinite';
+			oBox.onmouseenter=function(){
+				oUl.style.animationPlayState='paused';
+			}
+			oBox.onmouseleave=function(){
+				oUl.style.animationPlayState='running';
+			}
+		};
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img2/1.jpg" alt="" /></li>
+			<li><img src="img2/2.jpg" alt="" /></li>
+			<li><img src="img2/3.jpg" alt="" /></li>
+			<li><img src="img2/4.jpg" alt="" /></li>
+		</ul>
+		<div></div>
+	</div>
+</body>
+</html>
